@@ -21,7 +21,7 @@ class Predictor(BasePredictor):
             torch_dtype=torch.bfloat16
         ).eval().to(self.device)
         
-        self.processor = AutoProcessor.from_pretrained("checpoints/Qwen2-VL-7B-Instruct")
+        self.processor = AutoProcessor.from_pretrained("checkpoints/Qwen2-VL-7B-Instruct")
 
     def predict(
         self,
@@ -29,7 +29,7 @@ class Predictor(BasePredictor):
         page_number: int = Input(description="Page number to process", default=1),
         temperature: float = Input(description="Sampling temperature", default=0.8),
         max_new_tokens: int = Input(description="Maximum number of tokens to generate", default=50),
-    ) -> Any:
+    ) -> str:
         """Run a single prediction on the model"""
         # Save uploaded PDF temporarily and render to image
         pdf_path = str(pdf)
@@ -92,4 +92,4 @@ class Predictor(BasePredictor):
             skip_special_tokens=True
         )
 
-        return text_output[0] 
+        return str(text_output[0]) 
