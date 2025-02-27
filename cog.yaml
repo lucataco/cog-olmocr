@@ -1,0 +1,13 @@
+build:
+  gpu: true
+  cuda: "12.1"
+  python_version: "3.11"
+  system_packages:
+    - "poppler-utils"
+  python_requirements: "cog-requirements.txt"
+
+tests:
+  - inputs:
+    pdf: pdf.png
+
+predict: "predict.py:Predictor" 

@@ -1,0 +1,4 @@
+torch==2.5.1
+transformers==4.46.2
+pillow==10.2.0
+olmocr==0.1.58"
